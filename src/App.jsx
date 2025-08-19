@@ -1,9 +1,9 @@
-import ScoreWrapper from "./components/0_Basic/ScoreWrapper"
+import CounterWithoutState from "./components/1_State/CounterWithoutState"
 
 function App() {
   return (
     <>
-    <ScoreWrapper />
+    <CounterWithoutState />
     </>
   )
 }
