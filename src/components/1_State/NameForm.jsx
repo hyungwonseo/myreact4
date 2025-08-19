@@ -15,7 +15,7 @@ const Box = styled.section`
     width: 400px;
     height: 400px;
     padding: 50px;
-    background-color: dodgerblue;
+    background-color: ${props=>props.bgcolor};
     color: white;
     border-radius: 5px;   
     & input {
@@ -30,13 +30,13 @@ const Box = styled.section`
 function NameForm() {
     console.log("[렌더링] NameForm");
     const [inputColor, setInputColor] = useState("dodgerblue");
-    const [colorName, setColorName] = useState("");
+    const [colorName, setColorName] = useState("dodgerblue");
     function changeColor() {
         setColorName(inputColor);
     }
   return (
     <Container>
-        <Box>
+        <Box bgcolor={colorName}>
             <h2>컬러 입력</h2>
             <input type="text" value={inputColor} 
                 onChange={(e)=>setInputColor(e.target.value)}
