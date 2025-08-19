@@ -1,11 +1,9 @@
-import CounterWithoutState from "./components/1_State/CounterWithoutState"
-import CounterWithState from "./components/1_State/CounterWithState"
+import NameForm from "./components/1_State/NameForm"
 
 function App() {
   return (
     <>
-    <CounterWithoutState />
-    <CounterWithState />
+    <NameForm />
     </>
   )
 }
