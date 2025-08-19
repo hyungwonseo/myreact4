@@ -6,7 +6,7 @@ function CounterWithoutState() {
     console.log("[렌더링] CounterWithoutState")
     function increase() {
         count = count + 1;
-        console.log("현재 카운트: " + count);
+        //console.log("현재 카운트: " + count);
     }
   return (
     <>
