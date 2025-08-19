@@ -15,7 +15,7 @@ const Box = styled.section`
     width: 400px;
     height: 400px;
     padding: 50px;
-    background-color: ${props=>props.bgcolor};
+    background-color: ${props=>props.$bgcolor};
     color: white;
     border-radius: 5px;   
     & input {
@@ -36,7 +36,7 @@ function NameForm() {
     }
   return (
     <Container>
-        <Box bgcolor={colorName}>
+        <Box $bgcolor={colorName}>
             <h2>컬러 입력</h2>
             <input type="text" value={inputColor} 
                 onChange={(e)=>setInputColor(e.target.value)}
