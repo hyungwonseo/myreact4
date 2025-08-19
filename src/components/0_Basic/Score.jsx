@@ -10,7 +10,7 @@ const Table = styled.div`
     grid-template-columns: 1fr 1fr;
 `
 
-function Score({ firstName, score: {math, english, history} }) {
+function Score({ firstName, score: {math, english, history}, children }) {
   return (
     <Container>
         <h1>{firstName}</h1>
@@ -22,6 +22,7 @@ function Score({ firstName, score: {math, english, history} }) {
             <h3>History</h3>
             <p>{history}</p>
         </Table>
+        {children}
     </Container>    
   )
 }
