@@ -1,10 +1,9 @@
-import AvatarWrapper from "./components/0_Basic/AvatarWrapper"
-
+import ScoreWrapper from "./components/0_Basic/ScoreWrapper"
 
 function App() {
   return (
     <>
-    <AvatarWrapper />
+    <ScoreWrapper />
     </>
   )
 }

@@ -12,7 +12,17 @@ const Table = styled.div`
 
 function Score({ firstName, score: {math, english, history} }) {
   return (
-    <div>Score</div>
+    <Container>
+        <h1>{firstName}</h1>
+        <Table>
+            <h3>Math</h3>
+            <p>{math}</p>
+            <h3>English</h3>
+            <p>{english}</p>
+            <h3>History</h3>
+            <p>{history}</p>
+        </Table>
+    </Container>    
   )
 }
 
