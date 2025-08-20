@@ -7,6 +7,7 @@ function Example2() {
         <button onClick={()=>setShow(!show)}>
             {show ? "숨기기" : "보이기"}
         </button>
+        {show && <ChildComp />}
     </div>
   )
 }
