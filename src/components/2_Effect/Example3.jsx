@@ -5,7 +5,11 @@ function Example3() {
     const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
-
+        sendAPI().then((response) => {
+            console.log("서버로부터 응답 도착");
+            setData(response);
+            setLoading(false);
+        })
     }, []);
 
   return (
