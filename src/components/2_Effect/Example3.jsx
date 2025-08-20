@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Example3() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+
+    }, []);
 
   return (
     <div>
@@ -12,5 +16,13 @@ function Example3() {
     </div>
   )
 }
+
+const sendAPI = () => {
+    return new Promise((resolve) => {
+        setTimeout(()=>{
+            resolve({title: "게시판제목"});
+        }, 3000);
+    });
+};
 
 export default Example3
