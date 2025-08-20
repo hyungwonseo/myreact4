@@ -1,12 +1,10 @@
-import NameForm from "./components/1_State/NameForm"
-import Example1 from "./components/2_Effect/Example1"
-import Example2 from "./components/2_Effect/Example2"
-import Example3 from "./components/2_Effect/Example3"
+import Example4 from "./components/2_Effect/Example4"
+import SendAPI from "./components/2_Effect/SendAPI"
 
 function App() {
   return (
     <>
-    <Example3 />
+    <SendAPI />
     </>
   )
 }
