@@ -17,14 +17,21 @@ function SendAPI() {
     }
 
     useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/todos/3")
-        .then((response)=>{
-            setData(response.data);
+        // aync/await 사용
+        const loadData = async () => {
+            const fetchedData = await fetchTodo();
+            setData(fetchedData);
             setLoading(false);
-        })
-        .catch((error)=>{
-            console.log("데이터 가져오기 실패: ", error);
-        });
+        }
+        loadData();
+        // axios.get("https://jsonplaceholder.typicode.com/todos/3")
+        // .then((response)=>{
+        //     setData(response.data);
+        //     setLoading(false);
+        // })
+        // .catch((error)=>{
+        //     console.log("데이터 가져오기 실패: ", error);
+        // });
     }, []);
 
   return (
