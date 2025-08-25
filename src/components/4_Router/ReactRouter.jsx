@@ -3,8 +3,8 @@ import Home from './Home'
 import Contact from './Contact'
 import About from './About'
 import styled from 'styled-components'
-import Button from '../3_Props/Button'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const Menu = styled.div`
   display: flex;
@@ -21,17 +21,21 @@ const Body = styled.div`
 function ReactRouter() {
   return (
     <>    
-    <div>ReactRouter</div>
+    <h1>ReactRouter</h1>
     <BrowserRouter>
       <Menu>
-
+        <Link to='/home'><Button variant="primary">HOME</Button></Link>
+        <Link to='/about'><button type='button' className='btn btn-warning'>ABOUT</button></Link>
+        <Link to='/contact'><Button variant="success">CONTACT</Button></Link>
       </Menu>
       <Body>
         <Routes>
-          <Route></Route>
-          <Route></Route>
-          <Route></Route>
-          <Route></Route>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/index.html' element={<Home/>}></Route>
+          <Route path='/index' element={<Home/>}></Route>
+          <Route path='/home' element={<Home/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
+          <Route path='/contact' element={<Contact/>}></Route>
         </Routes>
       </Body>
     </BrowserRouter>

@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BasicRouter from "./components/4_Router/BasicRouter"
+import ReactRouter from './components/4_Router/ReactRouter';
 
 function App() {
   return (
     <>
-    <BasicRouter />
+    <ReactRouter />
     </>
   )
 }
