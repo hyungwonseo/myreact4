@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-    width: 100px;
+    width: ${props=>props.$width}px;
     height: 40px;
     padding: 10px 20px;
     font-size: 1.3rem;
@@ -13,9 +13,9 @@ const StyledButton = styled.button`
 `
 
 // 구조분해할당의 default값 설정 방법 (bgcolor="gray"...)
-function Button({ bgcolor="gray", title="Click", func=()=>{} }) {
+function Button({ width="100", bgcolor="gray", title="Click", func=()=>{} }) {
   return (
-    <StyledButton $bgcolor={bgcolor} onClick={func}>
+    <StyledButton $width={width} $bgcolor={bgcolor} onClick={func}>
         {title}
     </StyledButton>
   )

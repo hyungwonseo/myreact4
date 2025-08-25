@@ -4,8 +4,17 @@ import styled from 'styled-components';
 import Home from './Home';
 import About from './About';
 import Contact from './Contact';
-const Menu = styled.div``
-const Body = styled.div``
+const Menu = styled.div`
+  display: flex;
+  gap: 50px;
+`
+const Body = styled.div`
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+`
 
 function BasicRouter() {
   const [view, setView] = useState("home");
@@ -25,9 +34,12 @@ function BasicRouter() {
     <>
     <h1>BasicRouter</h1>
     <Menu>
-      <Button bgcolor='dodgerblue' title='HOME' func={()=>setView("home")} />
-      <Button bgcolor='dodgerblue' title='ABOUT' func={()=>setView("about")} />
-      <Button bgcolor='dodgerblue' title='CONTACT' func={()=>setView("contact")} />
+      <Button width="150" bgcolor='dodgerblue' 
+              title='HOME' func={()=>setView("home")} />
+      <Button width="150" bgcolor='dodgerblue' 
+              title='ABOUT' func={()=>setView("about")} />
+      <Button width="150" bgcolor='dodgerblue' 
+              title='CONTACT' func={()=>setView("contact")} />
     </Menu>
     <Body>
       {renderView()}
