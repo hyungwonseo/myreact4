@@ -1,9 +1,9 @@
-import Home from "./components/3_Props/Home"
+import BasicRouter from "./components/4_Router/BasicRouter"
 
 function App() {
   return (
     <>
-    <Home />
+    <BasicRouter />
     </>
   )
 }
