@@ -1,10 +1,9 @@
-import Example4 from "./components/2_Effect/Example4"
-import SendAPI from "./components/2_Effect/SendAPI"
+import Home from "./components/3_Props/Home"
 
 function App() {
   return (
     <>
-    <SendAPI />
+    <Home />
     </>
   )
 }
