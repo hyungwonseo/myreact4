@@ -9,6 +9,18 @@ const Body = styled.div``
 
 function BasicRouter() {
   const [view, setView] = useState("home");
+  function renderView() {
+    switch (view) {
+      case "home":
+        return <Home />;
+      case "about":
+        return <About />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Home />;
+    }
+  }
   return (
     <>
     <h1>BasicRouter</h1>
@@ -18,7 +30,7 @@ function BasicRouter() {
       <Button bgcolor='dodgerblue' title='CONTACT' func={()=>setView("contact")} />
     </Menu>
     <Body>
-      { view == "home" ? <Home /> : view == "about" ? <About /> : <Contact />}
+      {renderView()}
     </Body>
     </>
   )
