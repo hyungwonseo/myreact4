@@ -16,9 +16,7 @@ function ItemList() {
         }}>물품추가</button>
         <h3>물품목록</h3>
         <ul>
-            {items.map((item, index) => 
-                <li key={index}>{item}</li>
-            )}
+            {items.map((item, index) => <li key={index}>{item}</li>)}
         </ul>
     </>
   )
