@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function ItemList() {
   const [items, setItems] = useState([]);
@@ -14,6 +14,12 @@ function ItemList() {
             setItems(temp);
             setNewInputItem("");
         }}>물품추가</button>
+        <h3>물품목록</h3>
+        <ul>
+            {items.map((item, index) => 
+                <li key={index}>{item}</li>
+            )}
+        </ul>
     </>
   )
 }

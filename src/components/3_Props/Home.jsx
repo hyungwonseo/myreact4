@@ -28,6 +28,8 @@ function Home() {
                 func={()=>console.log("버튼2이 클릭됨")} />
             <Button bgcolor="teal" title="버튼3"
                 func={()=>console.log("버튼3이 클릭됨")} />
+            <br />
+            <br />
             <ItemList />
         </Content>
     </Container>
