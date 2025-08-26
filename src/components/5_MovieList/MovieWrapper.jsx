@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 function MovieWrapper() {
   return (
-    <div>MovieWrapper</div>
+    <div>
+      {/* <h3>Wrapper</h3> */}
+      <Outlet />
+    </div>
   )
 }
 

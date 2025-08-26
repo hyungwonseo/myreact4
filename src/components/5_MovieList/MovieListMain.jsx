@@ -49,7 +49,10 @@ function MovieListMain() {
             <ContentBox>
               <Routes>
                 <Route path='/' element={<Home />}></Route>
-                <Route path='/movie' element={<MovieWrapper />}></Route>
+                <Route path='/movie' element={<MovieWrapper />}>
+                  <Route index element={<MovieList />}></Route>
+                  <Route path=':id' element={<MovieDetail />}></Route>
+                </Route>
                 <Route path='/search' element={<Search />}></Route>
                 <Route path='/mypage' element={<MyPage />}></Route>
                 <Route path='/login' element={<Login />}></Route>
