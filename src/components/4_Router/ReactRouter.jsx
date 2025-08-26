@@ -34,7 +34,9 @@ function ReactRouter() {
           <Route path='/index.html' element={<Home/>}></Route>
           <Route path='/index' element={<Home/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
-          <Route path='/about' element={<About/>}></Route>
+          <Route path='/about' element={<About/>}>
+            <Route path=":id" element={<About />} />
+          </Route>
           <Route path='/contact' element={<Contact/>}></Route>
         </Routes>
       </Body>
