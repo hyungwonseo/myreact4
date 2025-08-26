@@ -44,10 +44,17 @@ function MovieListMain() {
         <Container>
           <Section>
             <Menu>
-
+              <Navbar></Navbar>
             </Menu>
             <ContentBox>
-              
+              <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/movie' element={<MovieWrapper />}></Route>
+                <Route path='/search' element={<Search />}></Route>
+                <Route path='/mypage' element={<MyPage />}></Route>
+                <Route path='/login' element={<Login />}></Route>
+                <Route path='*' element={<Error />}></Route>
+              </Routes>
             </ContentBox>
           </Section>
           <Footer></Footer>
