@@ -7,6 +7,8 @@ const header = {
   },
 };
 
+export const IMG_PATH = "https://image.tmdb.org/t/p/original";
+
 export const categories = [
     { category: "Now Playing", func: getMoviesNowPlaying },
     { category: "Popular", func: getMoviesPopular },
