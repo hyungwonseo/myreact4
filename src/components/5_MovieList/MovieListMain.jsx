@@ -39,7 +39,21 @@ const Footer = styled.div``;
 
 function MovieListMain() {
   return (
-    <div>MovieListMain</div>
+    <div>
+      <BrowserRouter>
+        <Container>
+          <Section>
+            <Menu>
+
+            </Menu>
+            <ContentBox>
+              
+            </ContentBox>
+          </Section>
+          <Footer></Footer>
+        </Container>
+      </BrowserRouter>
+    </div>
   )
 }
 
