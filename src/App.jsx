@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactRouter from './components/4_Router/ReactRouter';
+import MovieListMain from './components/5_MovieList/MovieListMain';
 
 function App() {
   return (
     <>
-    <ReactRouter />
+    <MovieListMain />
     </>
   )
 }
