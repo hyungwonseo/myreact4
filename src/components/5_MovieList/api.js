@@ -20,6 +20,21 @@ function getMoviesNowPlaying() {
         header
     );
 }
-function getMoviesPopular() {}
-function getMoviesTopRated() {}
-function getMoviesUpcoming() {}
+function getMoviesPopular() {
+    return axios.get(
+        'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+        header
+    );
+}
+function getMoviesTopRated() {
+    return axios.get(
+        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+        header
+    );
+}
+function getMoviesUpcoming() {
+    return axios.get(
+        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+        header
+    );
+}
