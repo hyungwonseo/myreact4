@@ -10,7 +10,7 @@ const Tab = styled.div`
 export const Button = styled.button`
   width: 130px;
   height: 40px;
-  background-color: dodgerblue;
+  background-color: #1E90FF;
   border: none;
   border-radius: 4px;
   color: white;
@@ -19,7 +19,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: #ff69b4;
+    background-color: #FF8C00;
   }
   &.selected {
     background-color: #32cd32;
