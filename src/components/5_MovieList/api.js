@@ -56,7 +56,7 @@ export function getMovieCreditById(id) {
 
 export async function getGenreListMovie() {
     let storedGenreList = JSON.parse(sessionStorage.getItem("GenreList"));
-    if (storedGenreList && storedGenreList.length > 0) {
+    if (storedGenreList && typeof storedGenreList !== 'undefined' && storedGenreList.length > 0) {
         console.log("세션스토리지에 장르리스트 있음");
         return storedGenreList;
     } else {
