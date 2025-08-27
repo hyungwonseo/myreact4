@@ -2,6 +2,50 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { categories } from './api';
 
+const Tab = styled.div`
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+`;
+export const Button = styled.button`
+  width: 130px;
+  height: 40px;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #ff69b4;
+  }
+  &.selected {
+    background-color: #32cd32;
+  }
+`;
+export const Container = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+`;
+export const Card = styled.div`
+  width: 100%;
+  border: 1px solid dodgerblue;
+  cursor: pointer;
+  padding: 10px;
+`;
+export const Img = styled.img`
+  width: 100%;
+`;
+export const Text = styled.div`
+  color: #333;
+  overflow-wrap: break-word;
+  word-break: break-all;
+`;
+
 function MovieList() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
