@@ -40,6 +40,20 @@ function getMoviesUpcoming() {
         header
     );
 }
+export function getMovieDetailById(id) {
+    return axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+        header
+    );
+}
+export function getMovieCreditById(id) {
+    return axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+        header
+    );
+}
+
+
 export async function getGenreListMovie() {
     let storedGenreList = JSON.parse(sessionStorage.getItem("GenreList"));
     if (storedGenreList && storedGenreList.length > 0) {
