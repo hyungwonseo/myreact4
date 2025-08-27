@@ -41,6 +41,7 @@ function MovieDetail() {
   const [credit, setCredit] = useState(null);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
+  const navigate = useNavigate();
 
   useEffect(()=>{
     getMovieInfo();
@@ -80,7 +81,7 @@ function MovieDetail() {
             <>
             <Header>
               <h1>{data.title}</h1>
-              <Icon>
+              <Icon onClick={()=>navigate(-1)}>
                 <IconBack />
               </Icon>
             </Header>
@@ -103,7 +104,7 @@ function MovieDetail() {
               <p>{data.overview}</p>
             </Content>
             <Bottom>
-              <Icon>
+              <Icon onClick={()=>navigate(-1)}>
                 <IconBack />
               </Icon>
             </Bottom>
