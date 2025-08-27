@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { categories } from './api';
+import { categories, getGenreListMovie } from './api';
 
 const Tab = styled.div`
   display: flex;
@@ -58,7 +58,13 @@ function MovieList() {
 
   async function getMovies(index) {
     try {
-      let response = await categories[index].func(); // 비동기함수 호출
+      let response = await getGenreListMovie();
+      if (!response || response.legth === 0) { // 200OK를 받았는데 내용이 비었을때
+        console.log("장르리스트 데이터가 없습니다");
+        return;
+      }
+      console.log(response.data);
+      response = await categories[index].func(); // 비동기함수 호출
       console.log(response.data);
       setData(response.data);
       setLoading(false);
