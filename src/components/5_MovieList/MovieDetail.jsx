@@ -36,6 +36,16 @@ const Bottom = styled.div`
   color: dodgerblue;
 `;
 
+const StyledLink = styled.a`
+  color: dodgerblue;
+  display: inline-block;
+  margin-bottom: 15px;
+  &:hover {
+    color: #0056b3; 
+    text-decoration: underline; 
+  }
+`;
+
 function MovieDetail() {
   const [data, setData] = useState(null);
   const [credit, setCredit] = useState(null);
@@ -91,6 +101,12 @@ function MovieDetail() {
               <p>장르 : {data.genres.map(g=>g.name).filter(name=>name).join(", ")}</p>
               <p>개봉일 : {data.release_date}</p>
               <p>상영시간 : {data.runtime + '분'}</p>
+              {
+                data.homepage && <><span>홈페이지 : </span>
+                <StyledLink href={data.homepage} target="_blank" rel="noopener noreferrer">
+                  {data.homepage}
+                </StyledLink></>
+              }              
               <p>감독 : {credit.crew.filter(c=>c.job === "Director")
                                     .map(c=>c.name)
                                     .filter(name=>name)
