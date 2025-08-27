@@ -71,7 +71,29 @@ function MovieDetail() {
   }
 
   return (
-    <div>MovieDetail</div>
+    <div>
+      <Container>
+        {
+          loading ? "로딩중..."
+          : (
+            <>
+            <Header></Header>
+            <Img></Img>
+            <Content>
+              <p>타이틀 : </p>
+              <p>장르 : </p>
+              <p>개봉일 : </p>
+              <p>상영시간 : </p>
+              <p>감독 : </p>
+              <p>배우 : </p>
+              <p></p>
+            </Content>
+            <Bottom></Bottom>
+            </>
+          )
+        }
+      </Container>
+    </div>
   )
 }
 
