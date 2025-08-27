@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getMovieCreditById, getMovieDetailById, IMG_PATH } from './api';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { IconBack } from './icons';
 
 const Container = styled.div`
   width: 100%;
@@ -79,6 +80,9 @@ function MovieDetail() {
             <>
             <Header>
               <h1>{data.title}</h1>
+              <Icon>
+                <IconBack />
+              </Icon>
             </Header>
             <Img src={IMG_PATH + data.backdrop_path}></Img>
             <Content>
@@ -98,7 +102,15 @@ function MovieDetail() {
                 }</p>
               <p>{data.overview}</p>
             </Content>
-            <Bottom></Bottom>
+            <Bottom>
+              <Icon>
+                <IconBack />
+              </Icon>
+            </Bottom>
+            <br />
+            <br />
+            <br />
+            <br />
             </>
           )
         }
