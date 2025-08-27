@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getMovieCreditById, getMovieDetailById } from './api';
+import { getMovieCreditById, getMovieDetailById, IMG_PATH } from './api';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -77,16 +77,26 @@ function MovieDetail() {
           loading ? "로딩중..."
           : (
             <>
-            <Header></Header>
-            <Img></Img>
+            <Header>
+              <h1>{data.title}</h1>
+            </Header>
+            <Img src={IMG_PATH + data.backdrop_path}></Img>
             <Content>
-              <p>타이틀 : </p>
-              <p>장르 : </p>
-              <p>개봉일 : </p>
-              <p>상영시간 : </p>
-              <p>감독 : </p>
-              <p>배우 : </p>
-              <p></p>
+              <p>타이틀 : {data.title}</p>
+              <p>장르 : {data.genres.map(g=>g.name).filter(name=>name).join(", ")}</p>
+              <p>개봉일 : {data.release_date}</p>
+              <p>상영시간 : {data.runtime + '분'}</p>
+              <p>감독 : {credit.crew.filter(c=>c.job === "Director")
+                                    .map(c=>c.name)
+                                    .filter(name=>name)
+                                    .join(", ")
+                }</p>
+              <p>배우 : {credit.cast.slice(0,10)
+                                   .map(c=>c.name)
+                                   .filter(name=>name)
+                                   .join(", ")                
+                }</p>
+              <p>{data.overview}</p>
             </Content>
             <Bottom></Bottom>
             </>
