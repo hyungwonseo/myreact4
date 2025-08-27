@@ -61,3 +61,12 @@ export async function getGenreListMovie() {
         }
     }
 }
+
+// [12, 35, 80]과 같이 숫자의 배열을 매개변수로 전달하면
+// "Adventure, Drama, Crime"과 같이 문자열로 리턴하는 함수
+export function getGenreName(genreList, idList) {
+    return idList.map(id => {
+        const found = genreList.find(g => g.id == id);
+        return found ? found.name : "";
+    }).filter(name => name).join(", ");
+}

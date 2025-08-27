@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { categories, getGenreListMovie } from './api';
+import { categories, getGenreListMovie, getGenreName, IMG_PATH } from './api';
 
 const Tab = styled.div`
   display: flex;
@@ -63,18 +63,22 @@ function MovieList() {
         console.log("장르리스트 데이터가 없습니다");
         return;
       }
-      console.log(response.data);
+      console.log(response);
       response = await categories[index].func(); // 비동기함수 호출
       console.log(response.data);
-      setData(response.data);
-      setLoading(false);
       setSelectedCat(index);
+      setData(response.data);
+      setLoading(false);      
     }
     catch (error) {
       console.log(error);
       alert("데이터를 불러오는 데 실패했습니다. 잠시 후 다시 시도해 주세요.");
     }
   }
+
+  useEffect(()=>{
+    console.log(data);
+  },[data]);
 
   return (
     <div>
@@ -88,6 +92,21 @@ function MovieList() {
           ))
         }
       </Tab>
+      <Container>
+        {
+          loading ? (
+            <p>로딩중...</p>
+          ) : (
+            data.results.map(movie => 
+              <Card key={movie.id}>
+                <Img src={IMG_PATH + movie.poster_path}></Img>
+                <Text>타이틀 : {movie.title}</Text>
+                <Text>장르 : {getGenreName(genreList, movie.genre_ids)}</Text>
+                <Text>{movie.overview}</Text>
+              </Card>
+          ))
+        }
+      </Container>
     </div>
   )
 }
