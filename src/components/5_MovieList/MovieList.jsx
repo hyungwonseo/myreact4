@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { categories, getGenreListMovie, getGenreName, IMG_PATH } from './api';
+import { useNavigate } from 'react-router-dom';
 
 const Tab = styled.div`
   display: flex;
@@ -51,6 +52,7 @@ function MovieList() {
   const [loading, setLoading] = useState(true);
   const [selectedCat, setSelectedCat] = useState(0);
   const [genreList, setGenreList] = useState([]);
+  const navigate = useNavigate(); // URL 변경함수
 
   useEffect(()=>{
     getMovies(0);
@@ -59,11 +61,12 @@ function MovieList() {
   async function getMovies(index) {
     try {
       let response = await getGenreListMovie();
-      if (!response || response.legth === 0) { // 200OK를 받았는데 내용이 비었을때
+      if (!response || response.length === 0) { // 200OK를 받았는데 내용이 비었을때
         console.log("장르리스트 데이터가 없습니다");
         return;
       }
       console.log(response);
+      setGenreList(response);
       response = await categories[index].func(); // 비동기함수 호출
       console.log(response.data);
       setSelectedCat(index);
@@ -75,10 +78,6 @@ function MovieList() {
       alert("데이터를 불러오는 데 실패했습니다. 잠시 후 다시 시도해 주세요.");
     }
   }
-
-  useEffect(()=>{
-    console.log(data);
-  },[data]);
 
   return (
     <div>
@@ -98,10 +97,11 @@ function MovieList() {
             <p>로딩중...</p>
           ) : (
             data.results.map(movie => 
-              <Card key={movie.id}>
+              <Card key={movie.id} onClick={()=> navigate(`${movie.id}`)}>
                 <Img src={IMG_PATH + movie.poster_path}></Img>
                 <Text>타이틀 : {movie.title}</Text>
                 <Text>장르 : {getGenreName(genreList, movie.genre_ids)}</Text>
+                <hr />
                 <Text>{movie.overview}</Text>
               </Card>
           ))
