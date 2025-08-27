@@ -40,3 +40,24 @@ function getMoviesUpcoming() {
         header
     );
 }
+export async function getGenreListMovie() {
+    let storedGenreList = JSON.parse(sessionStorage.getItem("GenreList"));
+    if (storedGenreList && storedGenreList.length > 0) {
+        console.log("세션스토리지에 장르리스트 있음");
+        return storedGenreList;
+    } else {
+        console.log("장르리스트 API 요청");
+        try {
+            const response = await axios.get(
+                "https://api.themoviedb.org/3/genre/movie/list?language=en",
+                header
+            );
+            const genreList = response.data.genres;
+            sessionStorage.setItem("GenreList", JSON.stringify(genreList));
+            return genreList;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
+}

@@ -49,6 +49,8 @@ export const Text = styled.div`
 function MovieList() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedCat, setSelectedCat] = useState(0);
+  const [genreList, setGenreList] = useState([]);
 
   useEffect(()=>{
     getMovies(0);
@@ -60,6 +62,7 @@ function MovieList() {
       console.log(response.data);
       setData(response.data);
       setLoading(false);
+      setSelectedCat(index);
     }
     catch (error) {
       console.log(error);
@@ -73,7 +76,7 @@ function MovieList() {
       <Tab>
         {
           categories.map((category, i) => (
-            <Button key={i} onClick={()=>getMovies(i)} className=''>
+            <Button key={i} onClick={()=>getMovies(i)} className={i == selectedCat ? "selected" : ""}>
               {category.category}
             </Button>
           ))
