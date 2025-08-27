@@ -38,8 +38,6 @@ const Bottom = styled.div`
 
 const StyledLink = styled.a`
   color: dodgerblue;
-  display: inline-block;
-  margin-bottom: 15px;
   &:hover {
     color: #0056b3; 
     text-decoration: underline; 
@@ -102,10 +100,10 @@ function MovieDetail() {
               <p>개봉일 : {data.release_date}</p>
               <p>상영시간 : {data.runtime + '분'}</p>
               {
-                data.homepage && <><span>홈페이지 : </span>
+                data.homepage && <p><span>홈페이지 : </span>
                 <StyledLink href={data.homepage} target="_blank" rel="noopener noreferrer">
                   {data.homepage}
-                </StyledLink></>
+                </StyledLink></p>
               }              
               <p>감독 : {credit.crew.filter(c=>c.job === "Director")
                                     .map(c=>c.name)
