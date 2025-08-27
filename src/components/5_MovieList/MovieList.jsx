@@ -68,7 +68,18 @@ function MovieList() {
   }
 
   return (
-    <div>MovieList</div>
+    <div>
+      <h1>Movie List</h1>
+      <Tab>
+        {
+          categories.map((category, i) => (
+            <Button key={i} onClick={()=>getMovies(i)} className=''>
+              {category.category}
+            </Button>
+          ))
+        }
+      </Tab>
+    </div>
   )
 }
 
