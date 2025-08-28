@@ -52,7 +52,12 @@ export function getMovieCreditById(id) {
         header
     );
 }
-
+export function searchMoviesByKeyword(keyword) {
+    return axios.get(
+        `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=en-US&page=1`,
+        header
+    )
+}
 
 export async function getGenreListMovie() {
     let storedGenreList = JSON.parse(sessionStorage.getItem("GenreList"));
