@@ -68,8 +68,37 @@ const Button = styled.button`
 `;
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <div>Login</div>
+    <div>
+      <Container>
+        <Box>
+          <h1>LOGIN</h1>
+          <br />
+          <Smallbox>
+            <label>Email Address</label>
+            <Icon>
+              <IconEmail />
+              <Input type='text' value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder='Username@gmail.com' />
+            </Icon>
+          </Smallbox>
+          <Smallbox>
+            <label>Password</label>
+            <Icon>
+              <IconPassword />
+              <Input type='password' value={password} autoComplete='off'
+                onChange={(e)=>setPassword(e.target.value)}
+                placeholder='. . . . . . . . . . . .' />
+            </Icon>
+          </Smallbox>
+          <Button>로그인</Button>
+        </Box>
+      </Container>
+    </div>
   )
 }
 
