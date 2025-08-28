@@ -41,6 +41,7 @@ const Icon = styled.div`
   gap: 10px;
 `;
 const Input = styled.input`
+  max-width: 85%;
   outline: none;
   border: none;
   &::placeholder {
@@ -70,6 +71,16 @@ const Button = styled.button`
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function handleSubmit() {
+    if (email && password) {
+      console.log("로그인: " + email + " " + password);
+      setEmail("");
+      setPassword(" ");
+    }else {
+      alert("이메일과 패스워드를 입력해주세요.");
+    }
+  }
 
   return (
     <div>
