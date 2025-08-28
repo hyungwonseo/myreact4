@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button, Container, Card, Img, Text } from './MovieList'
 import { IMG_PATH, getGenreListMovie, getGenreName, searchMoviesByKeyword } from './api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const SearchBox = styled.div`
   width: 100%;
@@ -25,6 +25,21 @@ function Search() {
   const [loading, setLoading] = useState(true);
   const [genreList, setGenreList] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  const urlKeyword = new URLSearchParams(location.search).get("keyword");
+
+  useEffect(()=>{
+    // search 페이지의 검색키워드가 있으면 searchMovies()를 호출
+    // 없으면 상태 초기화
+    if (urlKeyword) {
+      searchMovies(urlKeyword);
+    }else {
+      setData(null);
+      setLoading(true);
+    }
+  }, [urlKeyword]); 
+  // useEffect의 의존성배열에는 상태관리변수만 넣지는 않는다.
+  // 일반 변수도 추가할 수 있음!!!
 
   async function searchMovies(keyword) {
     try {
@@ -50,14 +65,27 @@ function Search() {
   return (
     <div>
       <SearchBox>
-        <Input />
-        <Button>검색</Button>
+        <Input value={inputKeyword} 
+               onChange={(e)=>setInputKeyword(e.target.value)}
+               placeholder='검색어를 입력해주세요' />
+        <Button onClick={()=>navigate(`/search?keyword=${inputKeyword}`)}>
+          검색
+        </Button>
       </SearchBox>
       <H3>검색한 결과 리스트</H3>
       <Container>
-        <Card>
-
-        </Card>
+        {
+          loading ? "대기중..."
+          : data.results.map(movie => (
+            <Card key={movie.id} onClick={()=>navigate(`/movie/${movie.id}`)}>
+              <Img src={IMG_PATH + movie.poster_path}></Img>
+              <Text>타이틀 : {movie.title}</Text>
+              <Text>장르 : {getGenreName(genreList, movie.genre_ids)}</Text>
+              <hr />
+              <Text>{movie.overview}</Text>
+            </Card>
+          ))
+        }
       </Container>
     </div>
   )
