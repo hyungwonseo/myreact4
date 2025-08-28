@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Button, Container, Card, Img, Text } from './MovieList'
 import { IMG_PATH, getGenreListMovie, getGenreName, searchMoviesByKeyword } from './api'
 import { useNavigate, useLocation } from 'react-router-dom'
+import noExist from './img/no_exist.jpg'
 
 const SearchBox = styled.div`
   width: 100%;
@@ -68,23 +69,32 @@ function Search() {
         <Input value={inputKeyword} 
                onChange={(e)=>setInputKeyword(e.target.value)}
                placeholder='검색어를 입력해주세요' />
-        <Button onClick={()=>navigate(`/search?keyword=${inputKeyword}`)}>
+        <Button onClick={()=>{
+            inputKeyword ? navigate(`/search?keyword=${inputKeyword}`)
+            : alert("검색어를 입력해주세요")
+          }}>
           검색
         </Button>
       </SearchBox>
-      <H3>검색한 결과 리스트</H3>
+      <H3>{urlKeyword ? `<${urlKeyword}>로 검색한 결과 리스트` : 'Search'}</H3>
       <Container>
         {
           loading ? "대기중..."
-          : data.results.map(movie => (
+          : (
+            data.results?.length > 0 ?
+            data.results.map(movie => (
             <Card key={movie.id} onClick={()=>navigate(`/movie/${movie.id}`)}>
-              <Img src={IMG_PATH + movie.poster_path}></Img>
+              <Img src={
+                movie.poster_path ? IMG_PATH + movie.poster_path
+                : noExist}>
+              </Img>
               <Text>타이틀 : {movie.title}</Text>
               <Text>장르 : {getGenreName(genreList, movie.genre_ids)}</Text>
               <hr />
               <Text>{movie.overview}</Text>
-            </Card>
+            </Card>            
           ))
+          : <p>검색한 결과가 없습니다.</p>)
         }
       </Container>
     </div>
