@@ -20,7 +20,18 @@ const H3 = styled.h3`
 
 function Search() {
   return (
-    <div>Search</div>
+    <div>
+      <SearchBox>
+        <Input />
+        <Button>검색</Button>
+      </SearchBox>
+      <H3>검색한 결과 리스트</H3>
+      <Container>
+        <Card>
+          
+        </Card>
+      </Container>
+    </div>
   )
 }
 
