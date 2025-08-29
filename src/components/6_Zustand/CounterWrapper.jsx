@@ -1,5 +1,7 @@
 import React from 'react'
 import { create } from 'zustand'
+import CounterDisplay from './CounterDisplay';
+import CounterButtons from './CounterButtons';
 
 export const useCounterStore = create((set) => ({
     count: 0,
@@ -9,7 +11,11 @@ export const useCounterStore = create((set) => ({
 
 function CounterWrapper() {
   return (
+    <>
     <div>CounterWrapper</div>
+    <CounterDisplay/>
+    <CounterButtons/>
+    </>
   )
 }
 
