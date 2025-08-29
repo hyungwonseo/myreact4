@@ -68,11 +68,29 @@ const Button = styled.button`
   }
 `;
 
-export const useUserStore = create((set) => ({
-  user : null,
-  login : (email) => set({user : {email : email}}),
-  logout : () => set({user : null}),
-}));
+// 1. Zustand를 이용한 전역 상태관리 기본 사용법
+// export const useUserStore = create((set) => ({
+//   user : null,
+//   isLoggedIn : false,
+//   login : (email) => set({user : {email : email}, isLoggedIn: true}),
+//   logout : () => set({user : null, isLoggedIn: false}),
+// }));
+
+// 2. Zustand를 이용하여 데이터를 로컬/세션 스토리지에 저장하는 옵션 사용법
+export const useUserStore = create(
+  persist(
+    (set) => ({
+      user : null,
+      isLoggedIn : false,
+      login : (email) => set({user : {email : email}, isLoggedIn: true}),
+      logout : () => set({user : null, isLoggedIn: false}),
+    }),
+    {
+      name: "user-storage",
+      storage: createJSONStorage(()=>sessionStorage),
+    }    
+  )
+)
 
 function Login() {
   const [email, setEmail] = useState("");
