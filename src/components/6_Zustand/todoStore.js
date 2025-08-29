@@ -35,5 +35,6 @@ export const useTodoStore = create((set, get) => ({
         } catch (error) {
             console.log(error);
         }
-    }
+    },
+    // updateTodos 라는 함수가 필요함
 })) 
