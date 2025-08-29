@@ -3,7 +3,7 @@ import { useCounterStore } from './CounterWrapper'
 
 function CounterDisplay() {
   const { count } = useCounterStore();
-  console.log("CounterDisplay 렌더링됨");
+  console.log("CounterDisplay 렌더링됨")
   return (
     <>
     <div>CounterDisplay</div>
