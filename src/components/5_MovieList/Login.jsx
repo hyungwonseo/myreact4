@@ -70,17 +70,19 @@ const Button = styled.button`
 
 export const useUserStore = create((set) => ({
   user : null,
-  login : (email) => set({user : {email}}),
+  login : (email) => set({user : {email : email}}),
   logout : () => set({user : null}),
 }));
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {user, login, logout} = useUserStore();
 
   function handleSubmit() {
     if (email && password) {
       console.log("로그인: " + email + " " + password);
+      login(email);
       setEmail("");
       setPassword(" ");
     }else {
