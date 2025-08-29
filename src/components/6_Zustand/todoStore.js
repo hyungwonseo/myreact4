@@ -31,6 +31,7 @@ export const useTodoStore = create((set, get) => ({
                     (d) => ({id: d.id, title: d.title, done: d.completed})
                 )]
             });
+            set({loading: false});
         } catch (error) {
             console.log(error);
         }
