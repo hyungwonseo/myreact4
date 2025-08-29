@@ -1,3 +1,4 @@
+import axios from "axios";
 import { create } from "zustand";
 
 export const useTodoStore = create((set, get) => ({
@@ -19,5 +20,19 @@ export const useTodoStore = create((set, get) => ({
         const todos = get().todos;
         return todos.filter(t=>t.done).length;
     },
-    fetchTodos:
-}))
+    // 비동기 데이터를 요청하기위한 함수
+    // 서버로부터 todo list를 얻어와서 상태변수인 todos에 저장함
+    fetchTodos: async () => {
+        try {
+            const response = await axios.get("https://jsonplaceholder.typicode.com/todos?_limit=5");
+            const data = response.data;
+            set({
+                todos: [...get().todos, ...data.map(
+                    (d) => ({id: d.id, title: d.title, done: d.completed})
+                )]
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+})) 
