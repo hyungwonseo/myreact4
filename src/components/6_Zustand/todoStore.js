@@ -8,7 +8,16 @@ export const useTodoStore = create((set, get) => ({
             todos: [...state.todos, {id: Date.now(), title, done: false}]
         }));
     },
-    toggleTodo:
-    completedCount:
+    toggleTodo: (id) => {
+        set((state) => ({
+            todos: state.todos.map((todo) =>
+                todo.id === id ? {...todo, done: !todo.done} : todo
+            )
+        }))
+    },
+    completedCount: () => {
+        const todos = get().todos;
+        return todos.filter(t=>t.done).length;
+    },
     fetchTodos:
 }))
