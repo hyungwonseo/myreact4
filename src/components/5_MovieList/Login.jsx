@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
@@ -96,6 +96,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {user, login, logout} = useUserStore();
+  const buttonRef = useRef(null);
 
   function handleSubmit() {
     if (email && password) {
@@ -105,6 +106,13 @@ function Login() {
       setPassword(" ");
     }else {
       alert("이메일과 패스워드를 입력해주세요.");
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      buttonRef.current.click();
     }
   }
 
@@ -120,6 +128,7 @@ function Login() {
               <IconEmail />
               <Input type='text' value={email}
                 onChange={(e)=>setEmail(e.target.value)}
+                onKeyDown={(e)=>handleKeyDown(e)}
                 placeholder='Username@gmail.com' />
             </Icon>
           </Smallbox>
@@ -129,10 +138,11 @@ function Login() {
               <IconPassword />
               <Input type='password' value={password} autoComplete='off'
                 onChange={(e)=>setPassword(e.target.value)}
+                onKeyDown={(e)=>handleKeyDown(e)}
                 placeholder='. . . . . . . . . . . .' />
             </Icon>
           </Smallbox>
-          <Button onClick={()=>handleSubmit()}>로그인</Button>
+          <Button ref={buttonRef} onClick={()=>handleSubmit()}>로그인</Button>
         </Box>
       </Container>
     </div>

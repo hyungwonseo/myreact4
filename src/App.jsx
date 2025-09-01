@@ -20,8 +20,8 @@ function App() {
   return (
     <>
     <GlobaStyle />
-    {/* <MovieListMain /> */}
-    <ReactRef/>
+    <MovieListMain />
+    {/* <ReactRef/> */}
     </>
   )
 }
