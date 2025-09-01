@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createGlobalStyle } from 'styled-components';
 import MovieListMain from './components/5_MovieList/MovieListMain';
-import TodoList from './components/6_Zustand/TodoList';
+import ReactRef from './components/7_Ref/ReactRef';
 
 const GlobaStyle = createGlobalStyle`
   * {
@@ -21,7 +21,7 @@ function App() {
     <>
     <GlobaStyle />
     {/* <MovieListMain /> */}
-    <TodoList/>
+    <ReactRef/>
     </>
   )
 }
