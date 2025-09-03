@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { IconEmail, IconPassword } from './icons'
+import axios from 'axios'
 
 const Container = styled.div`
   width: 100%;
@@ -98,15 +99,25 @@ function Login() {
   const {user, login, logout} = useUserStore();
   const buttonRef = useRef(null);
 
-  function handleSubmit() {
-    if (email && password) {
+  async function handleSubmit() {
+    // const loginData = {
+    //   userName: email,
+    //   password: password,
+    // }
+    try {
+      if (email && password) {
+      // const response = await axios.post("/api/user/login", loginData);
       console.log("로그인: " + email + " " + password);
       login(email);
       setEmail("");
-      setPassword(" ");
-    }else {
-      alert("이메일과 패스워드를 입력해주세요.");
-    }
+      setPassword("");
+      }else {
+        alert("이메일과 패스워드를 입력해주세요.");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("로그인 실패"); 
+    }    
   }
 
   function handleKeyDown(e) {
